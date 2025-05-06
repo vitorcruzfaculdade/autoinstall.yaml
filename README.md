@@ -4,6 +4,16 @@
 
 Este projeto fornece um arquivo `autoinstall.yaml` para instalação automática do **Ubuntu Desktop 24.04 LTS**, com configurações ideais para usuários brasileiros em ambientes corporativos, educacionais e governamentais.
 
+Este projeto utiliza o recurso de instalação automatizada (`autoinstall`) do Ubuntu 24.04, com foco em:
+
+- Remoção de telemetria
+- Instalação de codecs, fontes e pacotes essenciais
+- Configuração regional para o Brasil (pt_BR.UTF-8, teclado ABNT2)
+- Ativação de firewall, RDP e SSH
+- Suporte completo a Flatpak, Snap, OnlyOffice, Thunderbird em PT-BR
+- Otimizações inspiradas no [sysboost.sh](https://github.com/vcruz/sysboost.sh)
+- Pronto para uso doméstico, empresarial e educacional
+
 ## ✨ Funcionalidades
 
 - 🌐 Suporte completo ao idioma **português do Brasil** (sistema, LibreOffice, Thunderbird)
