@@ -45,20 +45,18 @@ Inicie o computador pelo pendrive e selecione a opção Instalação automática
 
 A instalação será iniciada e concluída automaticamente com as personalizações incluídas.
 
+```
 🔐 Como definir a senha
 A senha do usuário padrão administrador está definida por hash. Para gerar o hash de uma nova senha, execute:
 
-bash
-Copy
-Edit
+```bash
 openssl passwd -6
 Substitua o conteúdo da linha abaixo no arquivo autoinstall.yaml:
+```
 
-yaml
-Copy
-Edit
+```bash
 password: "$6$rounds=4096$...seu_hash_aqui..."
-
+```
 
 📜 Licença
 Este projeto está licenciado sob a GNU General Public License v3.0 (GPL-3.0).
