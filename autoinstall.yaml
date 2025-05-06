@@ -1,0 +1,291 @@
+#cloud-config
+#
+# Arquivo autoinstall para Ubuntu Desktop 24.04 LTS (Direcionado a desktops corporativos em português do Brasil)
+# Versão 1.0
+# Configuração automatizada desenvolvida por Vitor Cruz
+# https://linktr.ee/vitorcruzcode
+# https://github.com/vitorcruzfaculdade
+# https://ko-fi.com/vitorcruz
+# Inclui otimizações inspiradas no script sysboost.sh (por Vitor Cruz)
+# Remove telemetria, ativa codecs, fontes, firewall, RDP, SSH, OnlyOffice, etc.
+# Atenção aos campos de configuração de usuário e senha
+
+autoinstall:
+  version: 1
+
+  # Definições regionais e de teclado
+  locale: pt_BR.UTF-8
+  keyboard:
+    layout: br
+    variant: abnt2
+
+  # Usuário padrão: administrador (com senha em hash)
+  identity:
+    hostname: ubuntu-desktop
+    username: administrador
+    # Para definir a senha em hash, gere um hash usando o comando abaixo:
+    # $ openssl passwd -6
+    # Isso pedirá para inserir a senha desejada e gerar um hash, que deverá ser inserido na linha abaixo.
+    # Exemplo de saída do comando: 
+    # $6$rounds=4096$V8H/2bZ2Z9sftAb4$Rqlf7KjBP1t4As02Zk/ghGZfv3t...nJkwlNmlG/
+    # Insira o hash gerado abaixo no campo de 'password' entre as aspas.
+    # Substitua o valor abaixo pelo hash da senha
+    # !!!!! A senha definida ABAIXO é Abc.1234 - SUBSTITUIR antes de configurar seu equipamento !!!!!
+    password: "$6$u9w11mcDgLFTY1k0$jKePXcb6Etztl08oakzYFk6Wve3dOkVW1bFeNrKfddDSMs6bOJMu7lgpImWfzkTSmwB7hQM8LQPCEMWDPWAA71"
+    # !!!!! A senha definida ACIMA é Abc.1234 - SUBSTITUIR antes de configurar seu equipamento !!!!!
+
+  # Fuso horário
+  timezone: America/Sao_Paulo
+
+  # Layout de partição direto (uso automático de disco)
+  storage:
+    layout:
+      name: direct
+
+  # Atualizar sistema durante a instalação
+  updates:
+    update: yes
+
+  # Pacotes a instalar (multimídia, fontes, idiomas, desempenho, etc.)
+  packages:
+    #  
+    # Suporte a lojas e aplicativos
+    - flatpak                              # Gerenciador Flatpak
+    - snapd                                # Suporte ao Snap
+    - gnome-software                       # Central de aplicativos GNOME
+    - gnome-software-plugin-flatpak        # Suporte ao Flatpak (gnome-software)
+    - gnome-software-plugin-snap           # Suporte ao Snap (gnome-software)
+    #
+    # Suporte adicional para instalações e downloads
+    - apt-transport-https
+    - software-properties-common
+    - curl
+    - wget
+    #
+    # Recursos de Gerenciamento de RAM
+    - preload                              # Otimização de carregamento de apps
+    - zram-tools                           # Compressão de memória RAM
+    #
+    # Recursos de Firewall
+    - gufw				   # Front-end grafico para UFW
+    - ufw                                  # Firewall UFW
+    - openssh-server                       # Suporte a SSH
+    - gnome-remote-desktop                 # RDP nativo via GNOME
+    #
+    # Locales para sistema em pt-br
+    - language-selector-common             # Selecionador de idiomas
+    - language-pack-pt                     # Pacote que inclui pt e pt-br
+    - language-pack-gnome-pt               # Pacote que inclui pt e pt-br
+    - language-pack-pt-base                # Pacote que inclui pt e pt-br
+    - language-pack-gnome-pt-base          # Pacote que inclui pt e pt-br
+    #
+    # LibreOffice e Locales
+    - libreoffice                          # LibreOffice completo
+    - libreoffice-l10n-pt-br               # Tradução PT-BR
+    - libreoffice-help-pt-br               # Ajuda offline em PT-BR
+    #
+    # Suporte para Fontes True-type adicional
+    - ttf-mscorefonts-installer            # Fontes da Microsoft
+    - fonts-crosextra-carlito              # Fontes adicionais
+    - fonts-crosextra-caladea              # Fontes adicionais
+    - fonts-liberation                     # Fontes adicionais
+    - fonts-noto                           # Fontes adicionais
+    - fonts-noto-color-emoji               # Fontes adicionais
+    - fonts-dejavu                         # Fontes adicionais
+    - fonts-freefont-ttf                   # Fontes adicionais
+    - fonts-noto-mono                      # Fontes adicionais
+    - fonts-noto-ui-core                   # Fontes adicionais
+    #
+    # Cliente de e-mail
+    - thunderbird                          # Cliente de e-mail
+    - thunderbird-locale-pt-br             # Tradução do Thunderbird
+    #
+    # Suporte para arquivos compactados (cli e File-roller)
+    - gzip                                 # Compressão e decompressão gpzip
+    - bzip2                                # Compressão e decompressão bzip2
+    - xz-utils                             # Compressão e decompressão xz 
+    - tar                                  # Compressão e decompressão tar
+    - arc                                  # Compressão e decompressão arc
+    - lzop                                 # Compressão e decompressão lzop
+    - cpio                                 # Compressão e decompressão cpio
+    - p7zip-full                           # Compressão e decompressão 7z lzma
+    - zip                                  # Compressão zip
+    - unzip                                # Descompressão zip
+    - rar                                  # Compressão rar
+    - unrar                                # Descompressão rar
+    #
+    # Suporte Multimedia
+    - ubuntu-restricted-addons             # Codecs de mídia
+    - ubuntu-restricted-extras             # Complementos de mídia
+    - totem				   # Video Player
+    - totem-common                         # Video Player - Common packages
+    - totem-plugins			   # Plugins para video Player
+    #
+    # Personalizações de sistema
+    - dconf-cli                            # CLI para configs do GNOME
+    - gnome-extensions-app                 # Aplicativo de extensões GNOME
+    
+  # Snaps a instalar
+  snap:
+    - name: firefox                        # Instalar Mozilla Firefox (Snap)
+    - name: gnome-weather                  # Instalar GNOME Weather (Snap)
+    - name: onlyoffice-desktopeditors      # Editor OnlyOffice (Snap)
+    
+  # Comandos a serem executados após a instalação
+  late-commands:
+    # Definir locale padrão do sistema
+    - echo 'LANG=pt_BR.UTF-8' > /target/etc/default/locale
+    
+    # Remover pacotes relacionados à telemetria
+    - curtin in-target -- apt purge -y apport whoopsie ubuntu-report snapd
+    - curtin in-target -- apt autoremove -y
+
+    # Desabilitar e remover o serviço apport (relatórios de falhas)
+    - curtin in-target -- systemctl disable apport.service
+    - curtin in-target -- systemctl stop apport.service
+
+    # Desabilitar e remover o serviço whoopsie (telemetria)
+    - curtin in-target -- systemctl disable whoopsie.service
+    - curtin in-target -- systemctl stop whoopsie.service
+
+    # Remover a coleta de dados de telemetria do Ubuntu (se presente)
+    - curtin in-target -- rm -rf /etc/ubuntu-report
+    - curtin in-target -- rm -rf /var/lib/ubuntu-report
+
+    # Configurar o firewall UFW
+    - curtin in-target -- ufw default deny incoming            # Negar conexões externas
+    - curtin in-target -- ufw default allow outgoing           # Permitir conexões de saída
+    - curtin in-target -- ufw allow ssh                        # Liberar SSH
+    - curtin in-target -- ufw allow 3389/tcp                   # Liberar RDP TCP
+    - curtin in-target -- ufw allow 3389/udp                   # Liberar RDP UDP
+    - curtin in-target -- ufw logging on                       # Ativar logging do UFW
+    - curtin in-target -- ufw enable                           # Ativar firewall
+
+    # Remover servidores e clientes de acesso remoto não desejados
+    - curtin in-target -- apt purge -y vino vnc4server tightvncserver remmina*
+
+    # Configurar RDP nativo via GNOME
+    # Descomentar se necessário
+    # Atualizar password
+    #- curtin in-target -- mkdir -p /etc/skel/.config/dconf
+    #- curtin in-target -- bash -c 'echo "[org/gnome/desktop/remote-desktop]\nrdp-enabled=true\n[org/gnome/desktop/remote-desktop/rdp]\nenable=true\nprompt-enabled=false\nauthentication-methods=[\"password\"]\nview-only=false" > /etc/skel/.config/dconf/rdp.conf'
+    #- curtin in-target -- bash -c 'dconf load /org/gnome/desktop/remote-desktop/ < /etc/skel/.config/dconf/rdp.conf'
+    
+    # Configurar o proxy HTTP para todas as aplicações (sistêmico) (substituir localhost por seu endereço Proxy e 3128 por sua porta)
+    # Descomentar se necessário
+    #- echo 'http_proxy="http://localhost:3128/"' >> /target/etc/environment
+    #- echo 'https_proxy="http://localhost:3128/"' >> /target/etc/environment
+    #- echo 'ftp_proxy="http://localhost:3128/"' >> /target/etc/environment
+    #- echo 'no_proxy="localhost,127.0.0.1,.local"' >> /target/etc/environment
+
+    # Configurar proxy para o GNOME via dconf (substituir localhost por seu endereço Proxy e 3128 por sua porta)
+    # Descomentar se necessário
+    #- curtin in-target -- gsettings set org.gnome.system.proxy mode 'manual'
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.http host 'localhost'
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.http port 3128
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.http enabled true
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.https host 'localhost'
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.https port 3128
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.https enabled true
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.ftp host 'localhost'
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.ftp port 3128
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.ftp enabled true
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.socks host 'localhost'
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.socks port 3128
+    #- curtin in-target -- gsettings set org.gnome.system.proxy.socks enabled true
+
+    # Adicionar repositório do Flathub
+    - curtin in-target -- flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+    # Remover Ubuntu Store se presente (Snap duplicado)
+    - curtin in-target -- snap remove snap-store || true
+
+    # Configurar o Dock para a parte inferior, o botão do menu no início do Dock, e opção de minimizar acionado por barra
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true   # Menu Aplicativos no começo (semelhante ao menu iniciar do Windows)
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'  # Dock na parte inferior
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize' # Minimizar ao clicar
+    - curtin in-target --gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.8   # Dock com transparência (ajuste opcional)
+    
+    # Alinhamento dos ícones, descomentar de acordo com a preferência, a primeira é igual ao Windows 11 por padrão, a segunda é igual as versões clássicas do Windows.
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-to-dock-alignment 'CENTER'  # Centralizar os ícones
+    
+    # Definindo o Panel mode ou Extended-height (as duas opções foram mantidas para compatibilidades com o (Ubuntu 22.04 LTS e 24.04 LTS respectivamente)
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock panel-mode true
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
+    
+    # Definindo o dash-max-icon-size para 32 para ficar padrão Windows 11
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
+    
+    # Configurando Ícones na Área de trabalho como no Windows 11 por default:
+    # Exibindo diretório home (Documentos no destkop por padrão) 
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-home true
+    # Exibindo Lixeira (Lixeira no desktop por padrão)
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-trash true
+    # Exibindo dispositivos montados na área de trabalho para o Ubuntu 22.04 LTS e o Ubuntu 24.04 LTS respectivamente
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-mount true
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-volumes true
+    # Símbolo de atalho por padrão
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-link-emblem true
+    
+    # Sessão opcional e comentada para trocar o Menu inteiro, a testar (manter comentado se não for usar):
+    # Instalar Dash to Panel
+    #- curtin in-target -- apt install gnome-shell-extension-dash-to-panel -y
+    #
+    # Desabilitar Dash to Dock
+    #- curtin in-target -- gnome-extensions disable dash-to-dock@micxgx.gmail.com || true
+    #
+    # Habilitar Dash to Panel
+    #- curtin in-target -- gnome-extensions enable dash-to-panel@jderose9.github.com
+    #
+    # Configurações do Dash to Panel
+    #- curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-panel panel-position 'BOTTOM'   # Dock no fundo
+    #- curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-panel click-action 'minimize'   # Minimizar ao clicar
+    #- curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-panel panel-max-icon-size 32    # Ícones menores, mais estilo Windows
+    #- curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-panel panel-height 36           # Tamanho do painel
+    #- curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-panel background-opacity 0.8    # Transparência do painel
+
+   # Relógio no painel inferior
+   #- curtin in-target -- gsettings set org.gnome.desktop.interface clock-show-date true
+   #- curtin in-target -- gsettings set org.gnome.desktop.interface clock-show-seconds true
+   # 
+   # Adicionar applet de bandeja (se desejado)
+   #- curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-panel show-apps-at-top true   # Menu apps no topo
+   #  
+   # Sessão para definir formato de arquivos padrão para programas
+   
+    # Definir OnlyOffice como app padrão para todos os formatos de documentos
+    - curtin in-target -- bash -c 'echo -e "[Default Applications]\napplication/msword=onlyoffice-desktopeditors.desktop\napplication/vnd.ms-excel=onlyoffice-desktopeditors.desktop\napplication/vnd.ms-powerpoint=onlyoffice-desktopeditors.desktop\napplication/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop\napplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet=onlyoffice-desktopeditors.desktop\napplication/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop\napplication/vnd.oasis.opendocument.text=onlyoffice-desktopeditors.desktop\napplication/vnd.oasis.opendocument.spreadsheet=onlyoffice-desktopeditors.desktop\napplication/vnd.oasis.opendocument.presentation=onlyoffice-desktopeditors.desktop\napplication/rtf=onlyoffice-desktopeditors.desktop\napplication/x-abiword=onlyoffice-desktopeditors.desktop\napplication/x-msword=onlyoffice-desktopeditors.desktop\napplication/x-openoffice.org.writer=onlyoffice-desktopeditors.desktop\napplication/x-openoffice.org.spreadsheet=onlyoffice-desktopeditors.desktop\napplication/x-openoffice.org.presentation=onlyoffice-desktopeditors.desktop" >> /usr/share/applications/mimeapps.list'
+    
+    # Definir o Thunderbird como cliente de e-mail padrão (mailto)
+    - curtin in-target -- bash -c 'echo -e "[Default Applications]\nx-scheme-handler/mailto=thunderbird.desktop" >> /usr/share/applications/mimeapps.list'
+    
+    # Configurar o Totem para permitir todos os formatos de mídia
+    - curtin in-target -- gsettings set org.gnome.totem.plugins.enabled "['cdrom', 'dvd', 'vcd', 'audio', 'video']"
+    
+    # Associar o Totem como o reprodutor padrão para as extensões de mídia
+    - curtin in-target -- bash -c 'echo -e "[Default Applications]\nvideo/mp4=totem.desktop\nvideo/x-matroska=totem.desktop\nvideo/x-msvideo=totem.desktop\nvideo/quicktime=totem.desktop\nvideo/x-flv=totem.desktop\nvideo/webm=totem.desktop\nvideo/x-ms-wmv=totem.desktop\naudio/mpeg=totem.desktop\naudio/x-wav=totem.desktop\naudio/ogg=totem.desktop\naudio/x-flac=totem.desktop\naudio/mp3=totem.desktop\naudio/x-aac=totem.desktop\naudio/vnd.rn-realaudio=totem.desktop" >> /target/usr/share/applications/mimeapps.list'
+
+    # Instalar Google Chrome
+    - curtin in-target -- bash -c 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -'
+    - curtin in-target -- bash -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+    - curtin in-target -- apt-get update
+    - curtin in-target -- apt-get install -y google-chrome-stable
+    
+     # Adicionar Aplicações aos favoritos na dock
+    - curtin in-target -- bash -c "gsettings set org.gnome.shell favorite-apps \"['onlyoffice-desktopeditors.desktop', 'firefox.desktop', 'thunderbird.desktop', 'google-chrome.desktop']\""
+   
+    # Configurar o GNOME Weather para usar Rio de Janeiro como local (Mudar a localização caso seja de interesse)
+    - curtin in-target -- gsettings set org.gnome.weather.location city 'Rio de Janeiro'
+    
+    # late-commands do FINAL por questões lógicas
+    
+    # Ativar TRIM para SSDs 
+    # Comentado, a maioria dos alvos podem ter HDD ao invés de SSD, descomentar caso seja o contrário, manter comentado se incerto.
+    # - curtin in-target -- systemctl enable fstrim.timer 
+
+    # Ativar preload e zram
+    - curtin in-target -- systemctl enable preload
+    - curtin in-target -- systemctl enable zramswap.service || true
+    
+    # EOF
