@@ -1,4 +1,4 @@
-# 🇧🇷 Instalação Automatizada do Ubuntu Desktop 24.04 – Versão Brasileira
+# Instalação Automatizada do Ubuntu Desktop 24.04 – Versão Brasileira 🇧🇷
 
 **Desenvolvido por Vitor Cruz – Licença GPLv3**
 
