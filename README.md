@@ -61,3 +61,6 @@ password: "$6$rounds=4096$...seu_hash_aqui..."
 📜 Licença
 Este projeto está licenciado sob a GNU General Public License v3.0 (GPL-3.0).
 Você é livre para usar, modificar e distribuir, desde que mantenha os créditos e licencie derivados sob os mesmos termos.
+
+Desenvolvido com ❤️ por Vitor Cruz – 2025
+
