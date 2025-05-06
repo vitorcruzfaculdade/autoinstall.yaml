@@ -67,6 +67,38 @@ Substitua o conteúdo da linha abaixo no arquivo autoinstall.yaml:
 ```bash
 password: "$6$rounds=4096$...seu_hash_aqui..."
 ```
+## 🌐 Instalação via rede (sem ISO personalizada)
+
+Você pode usar este arquivo `autoinstall.yaml` sem precisar recriar uma ISO personalizada do Ubuntu. Basta hospedá-lo em um servidor HTTP local ou remoto e apontar a instalação para ele com o parâmetro de boot:
+
+### 1. Estrutura no servidor HTTP
+
+No servidor HTTP (ex: um notebook com Python):
+
+```
+/autoinstall/
+├── user-data        ← renomeie seu autoinstall.yaml para "user-data"
+└── meta-data        ← pode ser um arquivo vazio
+```
+
+### 2. Hospedar via Python (modo rápido)
+
+```bash
+cd /caminho/para/autoinstall/
+python3 -m http.server 80
+```
+
+### 3. Parâmetro de boot no Ubuntu (pressione `e` no GRUB)
+
+Adicione na linha que começa com `linux`:
+
+```text
+autoinstall ds=nocloud-net;s=http://192.168.0.10/autoinstall/
+```
+
+> O Subiquity buscará automaticamente o arquivo `user-data` e executará a instalação automática com base nele.
+
+---
 
 📜 Licença
 Este projeto está licenciado sob a GNU General Public License v3.0 (GPL-3.0).
