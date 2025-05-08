@@ -50,11 +50,16 @@ autoinstall:
   packages:
     #  
     # Suporte a lojas e aplicativos
-    - flatpak                              # Gerenciador Flatpak
-    - snapd                                # Suporte ao Snap
-    - gnome-software                       # Central de aplicativos GNOME
-    - gnome-software-plugin-flatpak        # Suporte ao Flatpak (gnome-software)
-    - gnome-software-plugin-snap           # Suporte ao Snap (gnome-software)
+    # Gerenciador Flatpak
+    - flatpak
+    # Suporte ao Snap
+    - snapd
+    # Central de aplicativos GNOME
+    - gnome-software
+    # Suporte ao Flatpak (gnome-software)
+    - gnome-software-plugin-flatpak
+    # Suporte ao Snap (gnome-software)
+    - gnome-software-plugin-snap
     #
     # Suporte adicional para instalações e downloads
     - apt-transport-https
@@ -63,73 +68,111 @@ autoinstall:
     - wget
     #
     # Recursos de Gerenciamento de RAM
-    - preload                              # Otimização de carregamento de apps
-    - zram-tools                           # Compressão de memória RAM
+    # Otimização de carregamento de apps
+    - preload
+    # Compressão de memória RAM
+    - zram-tools
     #
     # Recursos de Firewall
-    - gufw				                         # Front-end grafico para UFW
-    - ufw                                  # Firewall UFW
-    - openssh-server                       # Suporte a SSH
-    - gnome-remote-desktop                 # RDP nativo via GNOME
+    # Front-end grafico para UFW
+    - gufw
+    # Firewall UFW
+    - ufw
+    # Suporte a SSH
+    - openssh-server
+    # RDP nativo via GNOME
+    - gnome-remote-desktop
     #
     # Locales para sistema em pt-br
-    - language-selector-common             # Selecionador de idiomas
-    - language-pack-pt                     # Pacote que inclui pt e pt-br
-    - language-pack-gnome-pt               # Pacote que inclui pt e pt-br
-    - language-pack-pt-base                # Pacote que inclui pt e pt-br
-    - language-pack-gnome-pt-base          # Pacote que inclui pt e pt-br
+    # Selecionador de idiomas
+    - language-selector-common
+    # Pacote que inclui pt e pt-br
+    - language-pack-pt
+    # Pacote que inclui pt e pt-br
+    - language-pack-gnome-pt
+    # Pacote que inclui pt e pt-br
+    - language-pack-pt-base
+    # Pacote que inclui pt e pt-br
+    - language-pack-gnome-pt-base
     #
     # LibreOffice e Locales
-    - libreoffice                          # LibreOffice completo
-    - libreoffice-l10n-pt-br               # Tradução PT-BR
-    - libreoffice-help-pt-br               # Ajuda offline em PT-BR
+    # LibreOffice completo
+    - libreoffice
+    # Tradução PT-BR
+    - libreoffice-l10n-pt-br
+    # Ajuda offline em PT-BR
+    - libreoffice-help-pt-br
     #
     # Suporte para Fontes True-type adicional
-    - ttf-mscorefonts-installer            # Fontes da Microsoft
-    - fonts-crosextra-carlito              # Fontes adicionais
-    - fonts-crosextra-caladea              # Fontes adicionais
-    - fonts-liberation                     # Fontes adicionais
-    - fonts-noto                           # Fontes adicionais
-    - fonts-noto-color-emoji               # Fontes adicionais
-    - fonts-dejavu                         # Fontes adicionais
-    - fonts-freefont-ttf                   # Fontes adicionais
-    - fonts-noto-mono                      # Fontes adicionais
-    - fonts-noto-ui-core                   # Fontes adicionais
+    # Fontes da Microsoft
+    - ttf-mscorefonts-installer
+    - fonts-crosextra-carlito
+    - fonts-crosextra-caladea
+    - fonts-liberation
+    - fonts-noto
+    - fonts-noto-color-emoji
+    - fonts-dejavu
+    - fonts-freefont-ttf
+    - fonts-noto-mono
+    - fonts-noto-ui-core
     #
     # Cliente de e-mail
-    - thunderbird                          # Cliente de e-mail
-    - thunderbird-locale-pt-br             # Tradução do Thunderbird
+    - thunderbird
+    # Tradução do Thunderbird
+    - thunderbird-locale-pt-br
     #
     # Suporte para arquivos compactados (cli e File-roller)
-    - gzip                                 # Compressão e decompressão gpzip
-    - bzip2                                # Compressão e decompressão bzip2
-    - xz-utils                             # Compressão e decompressão xz 
-    - tar                                  # Compressão e decompressão tar
-    - arc                                  # Compressão e decompressão arc
-    - lzop                                 # Compressão e decompressão lzop
-    - cpio                                 # Compressão e decompressão cpio
-    - p7zip-full                           # Compressão e decompressão 7z lzma
-    - zip                                  # Compressão zip
-    - unzip                                # Descompressão zip
-    - rar                                  # Compressão rar
-    - unrar                                # Descompressão rar
+    # Compressão e decompressão gpzip
+    - gzip
+    # Compressão e decompressão bzip2
+    - bzip2
+    # Compressão e decompressão xz
+    - xz-utils
+    # Compressão e decompressão tar
+    - tar
+    # Compressão e decompressão arc
+    - arc
+    # Compressão e decompressão lzop
+    - lzop
+    # Compressão e decompressão cpio
+    - cpio
+    # Compressão e decompressão 7z lzma
+    - p7zip-full
+    # Compressão zip
+    - zip
+    # Descompressão zip
+    - unzip
+    # Compressão rar
+    - rar
+    # Descompressão rar
+    - unrar
     #
     # Suporte Multimedia
-    - ubuntu-restricted-addons             # Codecs de mídia
-    - ubuntu-restricted-extras             # Complementos de mídia
-    - totem				                         # Video Player
-    - totem-common                         # Video Player - Common packages
-    - totem-plugins			                   # Plugins para video Player
+    # Codecs de mídia
+    - ubuntu-restricted-addons
+    # Complementos de mídia
+    - ubuntu-restricted-extras
+    # Video Player
+    - totem
+    # Video Player - Common packages
+    - totem-common
+    # Plugins para video Player
+    - totem-plugins
     #
     # Personalizações de sistema
-    - dconf-cli                            # CLI para configs do GNOME
-    - gnome-extensions-app                 # Aplicativo de extensões GNOME
+    # CLI para configs do GNOME
+    - dconf-cli
+    - gnome-extensions-app
+    # Aplicativo de extensões GNOME
     
   # Snaps a instalar
   snap:
-    - name: firefox                        # Instalar Mozilla Firefox (Snap)
-    - name: gnome-weather                  # Instalar GNOME Weather (Snap)
-    - name: onlyoffice-desktopeditors      # Editor OnlyOffice (Snap)
+    # Instalar Mozilla Firefox (Snap)
+    - name: firefox
+    # Instalar GNOME Weather (Snap)
+    - name: gnome-weather
+    # Editor OnlyOffice (Snap)
+    - name: onlyoffice-desktopeditors
     
   # Comandos a serem executados após a instalação
   late-commands:
