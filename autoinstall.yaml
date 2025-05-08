@@ -1,7 +1,7 @@
 # cloud-config
 #
 # Arquivo autoinstall para Ubuntu Desktop 24.04 LTS (Desktop corporativos pt-br)
-# Versão 1.4
+# Versão 1.5
 # Configuração automatizada desenvolvida por Vitor Cruz
 # https://linktr.ee/vitorcruzcode
 # https://github.com/vitorcruzfaculdade
@@ -17,8 +17,8 @@ autoinstall:
   locale: pt_BR.UTF-8
   keyboard:
     layout: br
-    variant: abnt2
-
+  # variant: abnt2
+  
   # Usuário padrão: administrador (com senha em hash)
   identity:
     hostname: ubuntu-desktop
