@@ -1,7 +1,7 @@
 #cloud-config
 #
 # Arquivo autoinstall para Ubuntu Desktop 24.04 LTS (Direcionado a desktops corporativos em português do Brasil)
-# Versão 1.0
+# Versão 1.2
 # Configuração automatizada desenvolvida por Vitor Cruz
 # https://linktr.ee/vitorcruzcode
 # https://github.com/vitorcruzfaculdade
@@ -67,7 +67,7 @@ autoinstall:
     - zram-tools                           # Compressão de memória RAM
     #
     # Recursos de Firewall
-    - gufw				   # Front-end grafico para UFW
+    - gufw				                         # Front-end grafico para UFW
     - ufw                                  # Firewall UFW
     - openssh-server                       # Suporte a SSH
     - gnome-remote-desktop                 # RDP nativo via GNOME
@@ -117,9 +117,9 @@ autoinstall:
     # Suporte Multimedia
     - ubuntu-restricted-addons             # Codecs de mídia
     - ubuntu-restricted-extras             # Complementos de mídia
-    - totem				   # Video Player
+    - totem				                         # Video Player
     - totem-common                         # Video Player - Common packages
-    - totem-plugins			   # Plugins para video Player
+    - totem-plugins			                   # Plugins para video Player
     #
     # Personalizações de sistema
     - dconf-cli                            # CLI para configs do GNOME
@@ -134,10 +134,10 @@ autoinstall:
   # Comandos a serem executados após a instalação
   late-commands:
     # Definir locale padrão do sistema
-    - echo 'LANG=pt_BR.UTF-8' > /target/etc/default/locale
+    - curtin in-target -- bash -c "echo 'LANG=pt_BR.UTF-8' > /etc/default/locale"
     
     # Remover pacotes relacionados à telemetria
-    - curtin in-target -- apt purge -y apport whoopsie ubuntu-report snapd
+    - curtin in-target -- apt purge -y apport whoopsie ubuntu-report
     - curtin in-target -- apt autoremove -y
 
     # Desabilitar e remover o serviço apport (relatórios de falhas)
@@ -159,7 +159,7 @@ autoinstall:
     - curtin in-target -- ufw allow 3389/tcp                   # Liberar RDP TCP
     - curtin in-target -- ufw allow 3389/udp                   # Liberar RDP UDP
     - curtin in-target -- ufw logging on                       # Ativar logging do UFW
-    - curtin in-target -- ufw enable                           # Ativar firewall
+    - curtin in-target -- ufw --force enable                   # Ativar firewall UFW
 
     # Remover servidores e clientes de acesso remoto não desejados
     - curtin in-target -- apt purge -y vino vnc4server tightvncserver remmina*
@@ -204,7 +204,7 @@ autoinstall:
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true   # Menu Aplicativos no começo (semelhante ao menu iniciar do Windows)
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'  # Dock na parte inferior
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize' # Minimizar ao clicar
-    - curtin in-target --gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.8   # Dock com transparência (ajuste opcional)
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.8   # Dock com transparência (ajuste opcional)
     
     # Alinhamento dos ícones, descomentar de acordo com a preferência, a primeira é igual ao Windows 11 por padrão, a segunda é igual as versões clássicas do Windows.
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-to-dock-alignment 'CENTER'  # Centralizar os ícones
