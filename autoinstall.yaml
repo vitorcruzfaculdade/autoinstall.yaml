@@ -138,7 +138,9 @@ autoinstall:
     # Compressão e decompressão cpio
     - cpio
     # Compressão e decompressão 7z lzma
+    - lzma
     - p7zip-full
+    - 7zip-rar
     # Compressão zip
     - zip
     # Descompressão zip
