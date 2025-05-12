@@ -331,7 +331,7 @@ autoinstall:
     - curtin in-target -- apt-get install -y google-chrome-stable
     
     # Adicionar Aplicações aos favoritos na dock
-    - curtin in-target -- bash -c "gsettings set org.gnome.shell favorite-apps \"['onlyoffice-desktopeditors.desktop', 'firefox.desktop', 'thunderbird.desktop', 'google-chrome.desktop']\""
+    - curtin in-target -- bash -c 'gsettings set org.gnome.shell favorite-apps "[\"onlyoffice-desktopeditors.desktop\", \"firefox.desktop\", \"thunderbird.desktop\", \"google-chrome.desktop\"]"'
     
     # Configurar o GNOME Weather para usar Rio de Janeiro como local (Mudar a localização caso seja de interesse)
     - curtin in-target -- gsettings set org.gnome.weather.location city 'Rio de Janeiro'
