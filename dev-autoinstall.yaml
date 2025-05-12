@@ -9,6 +9,7 @@
 # Inclui otimizações inspiradas no script sysboost.sh (por Vitor Cruz)
 # Remove telemetria, ativa codecs, fontes, firewall, RDP, SSH, OnlyOffice, etc.
 # Atenção aos campos de configuração de usuário e senha
+# Não usar esta versão diretamente
 
 autoinstall:
   version: 1
