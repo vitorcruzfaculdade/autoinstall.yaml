@@ -72,7 +72,7 @@ autoinstall:
     - totem-plugins
     - dconf-cli
     - gnome-extensions-app
-  snap:
+  snaps:
     - name: firefox
     - name: gnome-weather
     - name: onlyoffice-desktopeditors
