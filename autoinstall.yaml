@@ -14,8 +14,6 @@ autoinstall:
       name: direct
     erase: true
     use-lvm: false
-  updates:
-    update: yes
   packages:
     - flatpak
     - snapd
