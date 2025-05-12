@@ -42,11 +42,7 @@ autoinstall:
   storage:
     layout:
       name: direct
-
-  # Atualizar sistema durante a instalação
-  updates:
-    update: yes
-
+      
   # Pacotes a instalar (multimídia, fontes, idiomas, desempenho, etc.)
   packages:
     #
