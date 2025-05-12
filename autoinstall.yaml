@@ -4,7 +4,6 @@ autoinstall:
   locale: pt_BR.UTF-8
   keyboard:
     layout: br
-    variant: abnt2
   identity:
     hostname: ubuntu-desktop
     username: administrador
