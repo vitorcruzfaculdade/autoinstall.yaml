@@ -169,9 +169,9 @@ autoinstall:
     - gnome-extensions-app
     # Aplicativo de extensões GNOME
     
-  # Snaps a instalar
-  snap:
-    # Instalar Mozilla Firefox (Snap)
+  # Snaps a instalar / atualizar
+  snaps:
+    # Atualizar Mozilla Firefox (Snap)
     - name: firefox
     # Instalar GNOME Weather (Snap)
     - name: gnome-weather
