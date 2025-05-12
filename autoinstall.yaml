@@ -107,7 +107,7 @@ autoinstall:
     - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-mount true
     - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-volumes true
     - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-link-emblem true
-    - curtin in-target -- bash -c 'echo -e "[Default Applications]\napplication/msword=onlyoffice-desktopeditors.desktop\napplication/vnd.ms-excel=onlyoffice-desktopeditors.desktop\napplication/vnd.ms-powerpoint=onlyoffice-desktopeditors.desktop\napplication/vnd.openxmlformats-officedocument.wordprocessingml.document=onlyoffice-desktopeditors.desktop\napplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet=onlyoffice-desktopeditors.desktop\napplication/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop\napplication/vnd.oasis.opendocument.text=onlyoffice-desktopeditors.desktop\napplication/vnd.oasis.opendocument.spreadsheet=onlyoffice-desktopeditors.desktop\napplication/vnd.oasis.opendocument.presentation=onlyoffice-desktopeditors.desktop\napplication/rtf=onlyoffice-desktopeditors.desktop\napplication/x-abiword=onlyoffice-desktopeditors.desktop\napplication/x-msword=onlyoffice-desktopeditors.desktop\napplication/x-openoffice.org.writer=onlyoffice-desktopeditors.desktop\napplication/x-openoffice.org.spreadsheet=onlyoffice-desktopeditors.desktop\napplication/x-openoffice.org.presentation=onlyoffice-desktopeditors.desktop" >> /usr/share/applications/mimeapps.list'
+    - curtin in-target -- bash -c 'gsettings set org.gnome.shell favorite-apps "[\'onlyoffice-desktopeditors.desktop\', \'firefox.desktop\', \'thunderbird.desktop\', \'google-chrome.desktop\']"'
     - curtin in-target -- bash -c 'echo -e "[Default Applications]\nx-scheme-handler/mailto=thunderbird.desktop" >> /usr/share/applications/mimeapps.list'
     - curtin in-target -- gsettings set org.gnome.totem.plugins.enabled "['cdrom', 'dvd', 'vcd', 'audio', 'video']"
     - curtin in-target -- bash -c 'echo -e "[Default Applications]\nvideo/mp4=totem.desktop\nvideo/x-matroska=totem.desktop\nvideo/x-msvideo=totem.desktop\nvideo/quicktime=totem.desktop\nvideo/x-flv=totem.desktop\nvideo/webm=totem.desktop\nvideo/x-ms-wmv=totem.desktop\naudio/mpeg=totem.desktop\naudio/x-wav=totem.desktop\naudio/ogg=totem.desktop\naudio/x-flac=totem.desktop\naudio/mp3=totem.desktop\naudio/x-aac=totem.desktop\naudio/vnd.rn-realaudio=totem.desktop" >> /target/usr/share/applications/mimeapps.list'
@@ -116,6 +116,6 @@ autoinstall:
     - curtin in-target -- apt-get update
     - curtin in-target -- apt-get install -y google-chrome-stable
     - curtin in-target -- bash -c "gsettings set org.gnome.shell favorite-apps "['onlyoffice-desktopeditors.desktop', 'firefox.desktop', 'thunderbird.desktop', 'google-chrome.desktop']""
-    - curtin in-target -- gsettings set org.gnome.weather.location city 'Rio de Janeiro'
+    - curtin in-target -- gsettings set org.gnome.weather.location city 'Rio de Janeiro' || true
     - curtin in-target -- systemctl enable preload
     - curtin in-target -- systemctl enable zramswap.service || true
