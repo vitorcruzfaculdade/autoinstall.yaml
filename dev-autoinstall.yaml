@@ -73,14 +73,12 @@ autoinstall:
     - zram-tools
     #
     # Recursos de Firewall
-    # Front-end grafico para UFW
-    - gufw
     # Firewall UFW
     - ufw
+    # Front-end grafico para UFW
+    - gufw
     # Suporte a SSH
     - openssh-server
-    # RDP nativo via GNOME
-    - gnome-remote-desktop
     #
     # Locales para sistema em pt-br
     # Selecionador de idiomas
@@ -171,6 +169,7 @@ autoinstall:
     # Video Mesa drivers
     - mesa-utils
     - mesa-vulkan-drivers
+    - vulkan-tools
     
   # Snaps a instalar / atualizar
   snaps:
