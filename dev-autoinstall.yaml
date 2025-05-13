@@ -168,6 +168,8 @@ autoinstall:
   snaps:
     # Atualizar Mozilla Firefox (Snap)
     - name: firefox
+    # Instalar Mozilla Thunderbird (Snap)
+    - name: thunderbird
     # Instalar GNOME Weather (Snap)
     - name: gnome-weather
     # Editor OnlyOffice (Snap)
