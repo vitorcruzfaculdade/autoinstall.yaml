@@ -13,7 +13,7 @@ autoinstall:
     layout:
       name: direct
     erase: true
-    use-lvm: false
+    use-lvm: true
   packages:
     - flatpak
     - snapd
@@ -76,6 +76,8 @@ autoinstall:
     - name: onlyoffice-desktopeditors
   late-commands:
     - curtin in-target -- bash -c "echo 'LANG=pt_BR.UTF-8' > /etc/default/locale"
+    - curtin in-target -- apt update && apt full-upgrade -y
+    - curtin in-target -- snap refresh
     - curtin in-target -- apt purge -y apport whoopsie ubuntu-report
     - curtin in-target -- apt autoremove -y
     - curtin in-target -- systemctl disable apport.service
