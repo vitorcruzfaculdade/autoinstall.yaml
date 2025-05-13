@@ -62,8 +62,12 @@ autoinstall:
     - unzip
     - rar
     - unrar
-    - ubuntu-restricted-addons
     - ubuntu-restricted-extras
+    - ubuntu-restricted-addons
+    - gstreamer1.0-plugins-good
+    - gstreamer1.0-plugins-bad
+    - gstreamer1.0-plugins-ugly
+    - gstreamer1.0-libav
     - totem
     - totem-common
     - totem-plugins
