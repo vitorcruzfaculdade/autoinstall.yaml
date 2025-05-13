@@ -56,7 +56,9 @@ autoinstall:
     - arc
     - lzop
     - cpio
+    - lzma
     - p7zip-full
+    - 7zip-rar
     - zip
     - unzip
     - rar
