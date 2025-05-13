@@ -29,7 +29,6 @@ autoinstall:
     - ufw
     - gufw
     - openssh-server
-    - gnome-remote-desktop
     - language-selector-common
     - language-pack-pt
     - language-pack-gnome-pt
