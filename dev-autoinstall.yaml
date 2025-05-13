@@ -163,8 +163,9 @@ autoinstall:
     # Personalizações de sistema
     # CLI para configs do GNOME
     - dconf-cli
-    - gnome-extensions-app
     # Aplicativo de extensões GNOME
+    - gnome-extensions-app
+    # Video Mesa drivers
     - mesa-utils
     - mesa-vulkan-drivers
     
