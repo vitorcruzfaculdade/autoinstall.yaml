@@ -253,7 +253,7 @@ autoinstall:
     # Menu Aplicativos no começo (semelhante ao menu iniciar do Windows)
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
     # Dock na parte inferior
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'bottom'
     # Minimizar ao clicar
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
     # Dock com transparência (ajuste opcional)
@@ -263,7 +263,7 @@ autoinstall:
     # a primeira é igual ao Windows 11 por padrão 
     # a segunda é igual as versões clássicas do Windows.
     # Centralizar os ícones
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-to-dock-alignment 'CENTER'
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-to-dock-alignment 'center'
     
     # Definindo o Panel mode ou Extended-height
     # as duas opções foram mantidas para 
