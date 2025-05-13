@@ -94,10 +94,10 @@ autoinstall:
     - curtin in-target -- flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - curtin in-target -- snap remove snap-store || true
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'bottom'
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.8
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-to-dock-alignment 'CENTER'
+    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-to-dock-alignment 'center'
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock panel-mode true
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
     - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
