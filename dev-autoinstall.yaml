@@ -42,7 +42,9 @@ autoinstall:
   storage:
     layout:
       name: direct
-      
+    erase: true
+    use-lvm: true
+    
   # Pacotes a instalar (multimídia, fontes, idiomas, desempenho, etc.)
   packages:
     #
@@ -179,7 +181,10 @@ autoinstall:
   late-commands:
     # Definir locale padrão do sistema
     - curtin in-target -- bash -c "echo 'LANG=pt_BR.UTF-8' > /etc/default/locale"
-    
+
+    # Atualização completa do sistema:
+    - curtin in-target -- apt update && apt full-upgrade -y
+    - curtin in-target -- snap refresh
     # Remover pacotes relacionados à telemetria
     - curtin in-target -- apt purge -y apport whoopsie ubuntu-report
     - curtin in-target -- apt autoremove -y
