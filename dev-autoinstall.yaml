@@ -150,9 +150,12 @@ autoinstall:
     #
     # Suporte Multimídia
     # Codecs de mídia
-    - ubuntu-restricted-addons
-    # Complementos de mídia
     - ubuntu-restricted-extras
+    - ubuntu-restricted-addons
+    - gstreamer1.0-plugins-good
+    - gstreamer1.0-plugins-bad
+    - gstreamer1.0-plugins-ugly
+    - gstreamer1.0-libav
     # Video Player
     - totem
     # Video Player - Common packages
