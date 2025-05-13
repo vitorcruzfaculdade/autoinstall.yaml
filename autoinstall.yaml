@@ -71,6 +71,7 @@ autoinstall:
     - gnome-extensions-app
   snaps:
     - name: firefox
+    - name: thunderbird
     - name: gnome-weather
     - name: onlyoffice-desktopeditors
   late-commands:
