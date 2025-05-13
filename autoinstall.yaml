@@ -104,29 +104,91 @@ autoinstall:
     - curtin in-target -- apt purge -y vino vnc4server tightvncserver remmina* || true
     - curtin in-target -- flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - curtin in-target -- snap remove snap-store || true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'bottom'
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.8
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-to-dock-alignment 'center'
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock panel-mode true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-home true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-trash true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-mount true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-volumes true
-    - curtin in-target -- gsettings set org.gnome.shell.extensions.ding show-link-emblem true
-    - curtin in-target -- bash -c 'gsettings set org.gnome.shell favorite-apps "[\'onlyoffice-desktopeditors.desktop\', \'firefox.desktop\', \'thunderbird.desktop\', \'google-chrome.desktop\']"'
-    - curtin in-target -- bash -c 'echo -e "[Default Applications]\nx-scheme-handler/mailto=thunderbird.desktop" >> /usr/share/applications/mimeapps.list'
-    - curtin in-target -- gsettings set org.gnome.totem.plugins.enabled "['cdrom', 'dvd', 'vcd', 'audio', 'video']"
+    - curtin in-target -- mkdir -p /etc/dconf/db/local.d
+    - curtin in-target -- bash -c 'cat <<EOF > /etc/dconf/db/local.d/00-ubuntu-settings
+[org/gnome/shell/extensions/dash-to-dock]
+show-apps-at-top=true
+dock-position="BOTTOM"
+click-action="minimize"
+background-opacity=0.8
+dash-to-dock-alignment="CENTER"
+panel-mode=true
+extend-height=true
+autohide=false
+dash-max-icon-size=32
+
+[org/gnome/shell/extensions/ding]
+show-home=true
+show-trash=true
+show-mount=true
+show-volumes=true
+show-link-emblem=true
+
+[org/gnome/shell]
+favorite-apps=["onlyoffice-desktopeditors.desktop", "firefox.desktop", "thunderbird.desktop", "google-chrome.desktop"]
+
+[org/gnome/totem/plugins]
+enabled=["cdrom", "dvd", "vcd", "audio", "video"]
+
+[org/gnome/weather]
+location="Rio de Janeiro"
+EOF'
+    - curtin in-target -- mkdir -p /home/administrador/.config/dconf
+    - curtin in-target -- bash -c 'cat <<EOF > /home/administrador/.config/dconf/user-profile.ini
+[org/gnome/shell/extensions/dash-to-dock]
+show-apps-at-top=true
+dock-position="BOTTOM"
+click-action="minimize"
+background-opacity=0.8
+dash-to-dock-alignment="CENTER"
+panel-mode=true
+extend-height=true
+autohide=false
+dash-max-icon-size=32
+
+[org/gnome/shell/extensions/ding]
+show-home=true
+show-trash=true
+show-mount=true
+show-volumes=true
+show-link-emblem=true
+
+[org/gnome/shell]
+favorite-apps=["onlyoffice-desktopeditors.desktop", "firefox.desktop", "thunderbird.desktop", "google-chrome.desktop"]
+
+[org/gnome/weather]
+location="Rio de Janeiro"
+
+[org/gnome/totem/plugins]
+enabled=["cdrom", "dvd", "vcd", "audio", "video"]
+EOF'
+    - curtin in-target -- chown administrador:administrador /home/administrador/.config/dconf/user-profile.ini
+    - curtin in-target -- bash -c "sudo -u administrador dconf load / < /home/administrador/.config/dconf/user-profile.ini"
+    - curtin in-target -- mkdir -p /home/administrador/.config
+    - curtin in-target -- bash -c 'cat <<EOF > /home/administrador/.config/mimeapps.list
+[Default Applications]
+video/mp4=totem.desktop
+video/x-matroska=totem.desktop
+video/x-msvideo=totem.desktop
+video/quicktime=totem.desktop
+video/x-flv=totem.desktop
+video/webm=totem.desktop
+video/x-ms-wmv=totem.desktop
+audio/mpeg=totem.desktop
+audio/x-wav=totem.desktop
+audio/ogg=totem.desktop
+audio/x-flac=totem.desktop
+audio/mp3=totem.desktop
+audio/x-aac=totem.desktop
+audio/vnd.rn-realaudio=totem.desktop
+x-scheme-handler/mailto=thunderbird.desktop
+EOF'
+    - curtin in-target -- chown administrador:administrador /home/administrador/.config/mimeapps.list
+    - curtin in-target -- dconf update
     - curtin in-target -- bash -c 'echo -e "[Default Applications]\nvideo/mp4=totem.desktop\nvideo/x-matroska=totem.desktop\nvideo/x-msvideo=totem.desktop\nvideo/quicktime=totem.desktop\nvideo/x-flv=totem.desktop\nvideo/webm=totem.desktop\nvideo/x-ms-wmv=totem.desktop\naudio/mpeg=totem.desktop\naudio/x-wav=totem.desktop\naudio/ogg=totem.desktop\naudio/x-flac=totem.desktop\naudio/mp3=totem.desktop\naudio/x-aac=totem.desktop\naudio/vnd.rn-realaudio=totem.desktop" >> /target/usr/share/applications/mimeapps.list'
     - curtin in-target -- bash -c 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -'
     - curtin in-target -- bash -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
     - curtin in-target -- apt-get update
     - curtin in-target -- apt-get install -y google-chrome-stable
-    - curtin in-target -- bash -c "gsettings set org.gnome.shell favorite-apps "['onlyoffice-desktopeditors.desktop', 'firefox.desktop', 'thunderbird.desktop', 'google-chrome.desktop']""
-    - curtin in-target -- gsettings set org.gnome.weather.location city 'Rio de Janeiro' || true
     - curtin in-target -- systemctl enable preload
     - curtin in-target -- systemctl enable zramswap.service || true
