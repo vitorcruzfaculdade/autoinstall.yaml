@@ -69,6 +69,8 @@ autoinstall:
     - totem-plugins
     - dconf-cli
     - gnome-extensions-app
+    - mesa-utils
+    - mesa-vulkan-drivers
   snaps:
     - name: firefox
     - name: thunderbird
