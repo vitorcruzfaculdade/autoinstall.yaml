@@ -131,8 +131,6 @@ autoinstall:
     - curtin in-target -- apt-get install -y google-chrome-stable
     - curtin in-target -- sysctl -w kernel.randomize_va_space=2
     - curtin in-target -- sysctl -w fs.suid_dumpable=0
-    - curtin in-target -- systemctl enable preload
-    - curtin in-target -- systemctl enable zramswap.service || true
     - curtin in-target -- snap remove snap-store || true
     - curtin in-target -- sed -i 's/^#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
     - curtin in-target -- systemctl enable apparmor
@@ -140,5 +138,6 @@ autoinstall:
     - curtin in-target -- systemctl enable clamav-daemon.service
     - curtin in-target -- systemctl enable rkhunter.service
     - curtin in-target -- systemctl enable fail2ban.service
+    - curtin in-target -- systemctl enable zramswap.service
     - curtin in-target -- bash -c 'echo "0 11 * * * /usr/bin/freshclam --quiet" >> /etc/crontab'
     - curtin in-target -- bash -c 'echo "0 12 * * 2,4 /usr/bin/clamscan -r /home" >> /etc/crontab'
