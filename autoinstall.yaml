@@ -91,7 +91,7 @@ autoinstall:
     - curtin in-target -- apt update && apt full-upgrade -y
     - curtin in-target -- snap refresh
     - curtin in-target -- ubuntu-drivers install
-    - curtin in-target -- apt purge -y apport whoopsie ubuntu-report kerneloops kerneloops-applet || true
+    - curtin in-target -- apt purge -y ubuntu-report popularity-contest apport apport-symptoms whoopsie kerneloops kerneloops-applet || true
     - curtin in-target -- apt autoremove -y
     - curtin in-target -- systemctl stop apport.service || true
     - curtin in-target -- systemctl disable apport.service || true
@@ -108,12 +108,13 @@ autoinstall:
     - curtin in-target -- ufw allow 3389/udp
     - curtin in-target -- ufw logging on
     - curtin in-target -- ufw --force enable
-    - curtin in-target -- apt purge -y vino vnc4server tightvncserver remmina* modemmanager || true
+    - curtin in-target -- apt purge -y vino xrdp vnc4server tightvncserver remmina* modemmanager || true
     - curtin in-target -- flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - curtin in-target -- snap remove snap-store || true
     - curtin in-target -- bash -c 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -'
     - curtin in-target -- bash -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
     - curtin in-target -- apt-get update
     - curtin in-target -- apt-get install -y google-chrome-stable
+    - curtin in-target -- sysctl -w fs.suid_dumpable=0
     - curtin in-target -- systemctl enable preload
     - curtin in-target -- systemctl enable zramswap.service || true
