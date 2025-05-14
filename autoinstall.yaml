@@ -124,10 +124,9 @@ autoinstall:
     - curtin in-target -- systemctl enable preload
     - curtin in-target -- systemctl enable zramswap.service || true
     - curtin in-target -- snap remove snap-store || true
-    - curtin in-target -- bash -c 'cat << EOF > /etc/profile.d/99-gnome-settings.sh
-#!/bin/bash
+    - curtin in-target -- echo '#!/bin/bash
 
-if [ -n "\$XDG_CURRENT_DESKTOP" ] && [ "\$XDG_CURRENT_DESKTOP" = "GNOME" ] && [ -n "\$DBUS_SESSION_BUS_ADDRESS" ]; then
+if [ -n "$XDG_CURRENT_DESKTOP" ] && [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] && [ -n "$DBUS_SESSION_BUS_ADDRESS" ]; then
   dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "\"BOTTOM\""
   dconf write /org/gnome/shell/extensions/dash-to-dock/dash-to-dock-alignment "\"center\""
   dconf write /org/gnome/shell/extensions/dash-to-dock/panel-mode false
@@ -139,7 +138,6 @@ if [ -n "\$XDG_CURRENT_DESKTOP" ] && [ "\$XDG_CURRENT_DESKTOP" = "GNOME" ] && [ 
   dconf write /org/gnome/shell/extensions/ding/show-mount true
   dconf write /org/gnome/shell/extensions/ding/show-volumes true
   dconf write /org/gnome/shell/extensions/ding/show-link-emblem false
-fi
-EOF
-   - curtin in-target -- chmod +x /etc/profile.d/99-gnome-settings.sh
+fi' > /etc/profile.d/99-gnome-settings.sh
+    - curtin in-target -- chmod +x /etc/profile.d/99-gnome-settings.sh
 
