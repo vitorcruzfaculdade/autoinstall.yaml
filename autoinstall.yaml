@@ -36,10 +36,14 @@ autoinstall:
     - language-pack-gnome-pt-base
     - libreoffice
     - libreoffice-l10n-pt-br
+    - libreoffice-l10n-pt
     - libreoffice-help-pt-br
+    - libreoffice-help-pt
     - hunspell-pt-br
     - hyphen-pt-br
+    - hyphen-pt-pt
     - mythes-pt-br
+    - ythes-pt-pt
     - aspell-pt-br
     - ttf-mscorefonts-installer
     - fonts-crosextra-carlito
@@ -53,6 +57,8 @@ autoinstall:
     - fonts-noto-ui-core
     - thunderbird
     - thunderbird-locale-pt-br
+    - thunderbird-locale-pt
+    - thunderbird-locale-pt-pt
     - gzip
     - bzip2
     - xz-utils
