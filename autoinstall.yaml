@@ -96,7 +96,6 @@ autoinstall:
     - clamav
     - clamav-daemon
     - clamtk
-    - rkhunter
     - fail2ban
   snaps:
     - name: firefox
@@ -141,5 +140,5 @@ autoinstall:
     - curtin in-target -- systemctl enable clamav-daemon.service
     - curtin in-target -- systemctl enable rkhunter.service
     - curtin in-target -- systemctl enable fail2ban.service
+    - curtin in-target -- bash -c 'echo "0 11 * * * /usr/bin/freshclam --quiet" >> /etc/crontab'
     - curtin in-target -- bash -c 'echo "0 12 * * 2,4 /usr/bin/clamscan -r /home" >> /etc/crontab'
-    - curtin in-target -- bash -c 'echo "0 13 * * 2,4 /usr/bin/rkhunter --update && /usr/bin/rkhunter --check" >> /etc/crontab'
