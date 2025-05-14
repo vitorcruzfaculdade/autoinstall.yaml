@@ -114,3 +114,4 @@ autoinstall:
     - curtin in-target -- apt-get install -y google-chrome-stable
     - curtin in-target -- systemctl enable preload
     - curtin in-target -- systemctl enable zramswap.service || true
+    - curtin in-target -- systemctl disable ModemManager.service || true
