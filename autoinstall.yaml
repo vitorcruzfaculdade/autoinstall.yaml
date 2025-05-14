@@ -132,7 +132,7 @@ autoinstall:
     - curtin in-target -- sysctl -w kernel.randomize_va_space=2
     - curtin in-target -- sysctl -w fs.suid_dumpable=0
     - curtin in-target -- snap remove snap-store || true
-    - curtin in-target -- sed -i 's/^#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+    - curtin in-target -- bash -c "test -f /etc/ssh/sshd_config && sed -i 's/^#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config || echo 'sshd_config not found'"
     - curtin in-target -- systemctl enable apparmor
     - curtin in-target -- systemctl enable clamav-freshclam.service
     - curtin in-target -- systemctl enable clamav-daemon.service
