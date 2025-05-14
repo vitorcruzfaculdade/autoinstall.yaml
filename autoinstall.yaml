@@ -31,12 +31,15 @@ autoinstall:
     - openssh-server
     - language-selector-common
     - language-pack-pt
-    - language-pack-gnome-pt
     - language-pack-pt-base
+    - language-pack-gnome-pt
     - language-pack-gnome-pt-base
     - libreoffice
     - libreoffice-l10n-pt-br
     - libreoffice-help-pt-br
+    - hunspell-pt-br
+    - hyphen-pt-br
+    - mythes-pt-br
     - ttf-mscorefonts-installer
     - fonts-crosextra-carlito
     - fonts-crosextra-caladea
