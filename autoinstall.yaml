@@ -80,6 +80,7 @@ autoinstall:
     - gstreamer1.0-plugins-bad
     - gstreamer1.0-plugins-ugly
     - gstreamer1.0-libav
+    - libavcodec-extra
     - totem
     - totem-common
     - totem-plugins
@@ -95,19 +96,21 @@ autoinstall:
     - clamav
     - clamav-daemon
     - clamtk
+    - rkhunter
     - fail2ban
   snaps:
     - name: firefox
     - name: thunderbird
-    - name: gnome-weather
     - name: onlyoffice-desktopeditors
+    - name: cheese
+    - name: gnome-weather
   late-commands:
     - curtin in-target -- bash -c "echo 'LANG=pt_BR.UTF-8' > /etc/default/locale"
-    - curtin in-target -- apt update && apt full-upgrade -y
+    - curtin in-target -- apt-get update && apt-get upgrade -y
     - curtin in-target -- snap refresh
     - curtin in-target -- ubuntu-drivers install
-    - curtin in-target -- apt purge -y ubuntu-report popularity-contest apport apport-symptoms whoopsie kerneloops kerneloops-applet || true
-    - curtin in-target -- apt autoremove -y
+    - curtin in-target -- apt-get --purge autoremove ubuntu-report popularity-contest apport apport-symptoms whoopsie kerneloops kerneloops-applet -y || true
+    - curtin in-target -- apt-get --purge autoremove -y
     - curtin in-target -- systemctl disable apport.service || true
     - curtin in-target -- systemctl disable whoopsie.service || true
     - curtin in-target -- systemctl disable ModemManager.service || true
@@ -121,7 +124,7 @@ autoinstall:
     - curtin in-target -- ufw allow 3389/udp
     - curtin in-target -- ufw logging on
     - curtin in-target -- ufw --force enable
-    - curtin in-target -- apt purge -y vino xrdp vnc4server tightvncserver remmina* modemmanager || true
+    - curtin in-target -- apt-get --purge autoremove vino xrdp vnc4server tightvncserver remmina* modemmanager -y || true
     - curtin in-target -- flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - curtin in-target -- bash -c 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -'
     - curtin in-target -- bash -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
@@ -136,5 +139,7 @@ autoinstall:
     - curtin in-target -- systemctl enable apparmor
     - curtin in-target -- systemctl enable clamav-freshclam.service
     - curtin in-target -- systemctl enable clamav-daemon.service
+    - curtin in-target -- systemctl enable rkhunter.service
     - curtin in-target -- systemctl enable fail2ban.service
     - curtin in-target -- bash -c 'echo "0 12 * * 2,4 /usr/bin/clamscan -r /home" >> /etc/crontab'
+    - curtin in-target -- bash -c 'echo "0 13 * * 2,4 /usr/bin/rkhunter --update && /usr/bin/rkhunter --check" >> /etc/crontab'
