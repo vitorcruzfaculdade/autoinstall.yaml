@@ -91,12 +91,14 @@ autoinstall:
     - curtin in-target -- apt update && apt full-upgrade -y
     - curtin in-target -- snap refresh
     - curtin in-target -- ubuntu-drivers install
-    - curtin in-target -- apt purge -y apport whoopsie ubuntu-report
+    - curtin in-target -- apt purge -y apport whoopsie ubuntu-report kerneloops kerneloops-applet || true
     - curtin in-target -- apt autoremove -y
-    - curtin in-target -- systemctl disable apport.service
-    - curtin in-target -- systemctl stop apport.service
-    - curtin in-target -- systemctl disable whoopsie.service
-    - curtin in-target -- systemctl stop whoopsie.service
+    - curtin in-target -- systemctl stop apport.service || true
+    - curtin in-target -- systemctl disable apport.service || true
+    - curtin in-target -- systemctl stop whoopsie.service || true
+    - curtin in-target -- systemctl disable whoopsie.service || true
+    - curtin in-target -- systemctl stop ModemManager.service || true
+    - curtin in-target -- systemctl disable ModemManager.service || true
     - curtin in-target -- rm -rf /etc/ubuntu-report
     - curtin in-target -- rm -rf /var/lib/ubuntu-report
     - curtin in-target -- ufw default deny incoming
@@ -106,7 +108,7 @@ autoinstall:
     - curtin in-target -- ufw allow 3389/udp
     - curtin in-target -- ufw logging on
     - curtin in-target -- ufw --force enable
-    - curtin in-target -- apt purge -y vino vnc4server tightvncserver remmina* || true
+    - curtin in-target -- apt purge -y vino vnc4server tightvncserver remmina* modemmanager || true
     - curtin in-target -- flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - curtin in-target -- snap remove snap-store || true
     - curtin in-target -- bash -c 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -'
@@ -115,4 +117,3 @@ autoinstall:
     - curtin in-target -- apt-get install -y google-chrome-stable
     - curtin in-target -- systemctl enable preload
     - curtin in-target -- systemctl enable zramswap.service || true
-    - curtin in-target -- systemctl disable ModemManager.service || true
