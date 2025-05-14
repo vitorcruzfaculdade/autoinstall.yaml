@@ -13,7 +13,7 @@ autoinstall:
     layout:
       name: direct
     erase: true
-    use-lvm: true
+    use-lvm: false
   packages:
     - flatpak
     - snapd
