@@ -40,6 +40,7 @@ autoinstall:
     - libreoffice-help-pt-br
     - libreoffice-help-pt
     - hunspell-pt-br
+    - hunspell-pt-pt
     - hyphen-pt-br
     - hyphen-pt-pt
     - mythes-pt-br
