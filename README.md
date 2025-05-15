@@ -134,7 +134,7 @@ Você pode usar, modificar e redistribuir livremente, desde que mantenha os cré
 ## 🙋 Autor
 
 **Vitor Cruz**  
-Com ❤️ para a comunidade brasileira de software livre.
+Feito usando 💻☕ , com ❤️ para a comunidade brasileira de software livre.
 
 - [Linktree](https://linktr.ee/vitorcruzcode)
 - [Ko-fi](https://ko-fi.com/vitorcruz)
