@@ -46,6 +46,7 @@ autoinstall:
     - mythes-pt-br
     - mythes-pt-pt
     - aspell-pt-br
+    - wbrazilian
     - ttf-mscorefonts-installer
     - fonts-crosextra-carlito
     - fonts-crosextra-caladea
