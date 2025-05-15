@@ -53,7 +53,7 @@ O instalador gráfico (Subiquity) possui uma opção chamada **"Instalação Aut
 1. Baixe e grave a ISO oficial do Ubuntu Desktop (24.04 ou 25.04)
 2. Inicie o computador pelo pendrive
 3. Na tela de boas-vindas, clique em **“Instalação Automatizada”**
-4. Cole o seguinte link no campo solicitado:
+4. Digite o seguinte link no campo solicitado:
 
 ```
 https://raw.githubusercontent.com/vitorcruzfaculdade/autoinstall.yaml/refs/heads/main/autoinstall.yaml
