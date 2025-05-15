@@ -98,6 +98,7 @@ autoinstall:
     - clamtk
     - fail2ban
   snaps:
+    - name: snap-store
     - name: firefox
     - name: thunderbird
     - name: onlyoffice-desktopeditors
