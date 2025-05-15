@@ -127,10 +127,10 @@ autoinstall:
     - curtin in-target -- ufw --force enable
     - curtin in-target -- apt-get --purge autoremove vino xrdp vnc4server tightvncserver remmina* modemmanager -y || true
     - curtin in-target -- flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    - curtin in-target -- bash -c 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -'
-    - curtin in-target -- bash -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+    - curtin in-target -- wget -O /tmp/google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - curtin in-target -- dpkg -i /tmp/google-chrome.deb || true
     - curtin in-target -- apt-get update
-    - curtin in-target -- apt-get install -y google-chrome-stable
+    - curtin in-target -- apt-get install -f -y || true
     - curtin in-target -- sysctl -w kernel.randomize_va_space=2
     - curtin in-target -- sysctl -w fs.suid_dumpable=0
     - curtin in-target -- snap remove snap-store || true
