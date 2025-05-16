@@ -98,6 +98,16 @@ autoinstall:
     - clamav-daemon
     - clamtk
     - fail2ban
+    - realmd
+    - sssd
+    - adcli
+    - krb5-user
+    - libpam-krb5
+    - samba
+    - samba-common-bin
+    - oddjob
+    - oddjob-mkhomedir
+    - packagekit
   snaps:
     - name: snap-store
     - name: firefox
@@ -144,3 +154,6 @@ autoinstall:
     - curtin in-target -- systemctl enable zramswap.service
     - curtin in-target -- bash -c 'echo "0 11 * * * /usr/bin/freshclam --quiet" >> /etc/crontab'
     - curtin in-target -- bash -c 'echo "0 12 * * 2,4 /usr/bin/clamscan -r /home" >> /etc/crontab'
+    - curtin in-target -- authselect select sssd with-mkhomedir --force || true
+    - curtin in-target -- systemctl enable oddjobd || true
+    - curtin in-target -- systemctl enable sssd || true
