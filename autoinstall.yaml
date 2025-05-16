@@ -102,9 +102,9 @@ autoinstall:
     - sssd
     - adcli
     - krb5-user
-    - libpam-krb5
-    - samba
+    - samba-common
     - samba-common-bin
+    - libnss-sss
     - oddjob
     - oddjob-mkhomedir
     - packagekit
