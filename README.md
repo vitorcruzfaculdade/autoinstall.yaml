@@ -14,7 +14,8 @@ Este projeto fornece um arquivo `autoinstall.yaml` para instalação **totalment
   - **Thunderbird (Snap)** (tradução PT-BR)
   - **OnlyOffice (Snap)**
   - **Codecs multimídia** e **fontes da Microsoft**
-  - **GNOME Weather** via Snap, com localização padrão no Rio de Janeiro
+  - **GNOME Weather (Snap)** Com localização padrão no Rio de Janeiro
+  - **GNOME Cheese** Para testes e uso local de Webcam
   - **GNOME Software** com suporte a Snap e Flatpak
 - **Firewall UFW** ativado com regras seguras, permitindo RDP e SSH (Logging ativado)
 - Suporte completo a Flatpak, Snap em Português do Brasil (pt-br)
