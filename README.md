@@ -9,14 +9,15 @@ Este projeto fornece um arquivo `autoinstall.yaml` para instalação **totalment
 - Suporte completo ao Brasil
 - Configuração regional para o Brasil (pt_BR.UTF-8, teclado ABNT2) e fuso horário de **São Paulo**
 - Instalação de:
-  - **LibreOffice completo** com ajuda e tradução PT-BR
-  - **Thunderbird PT-BR**
+  - **LibreOffice** (completo com ajuda e tradução PT-BR)
+  - **Mozilla Firefox (Snap)** 
+  - **Thunderbird (Snap)** (tradução PT-BR)
   - **OnlyOffice (Snap)**
   - **Codecs multimídia** e **fontes da Microsoft**
   - **GNOME Weather** via Snap, com localização padrão no Rio de Janeiro
   - **GNOME Software** com suporte a Snap e Flatpak
 - **Firewall UFW** ativado com regras seguras, permitindo RDP e SSH (Logging ativado)
-- Suporte completo a Flatpak, Snap, LibreOffice, OnlyOffice, Thunderbird, Firefox, Google Chrome, em Português do Brasil (pt-br)
+- Suporte completo a Flatpak, Snap em Português do Brasil (pt-br)
 - Otimizações de desempenho com `preload` e `zram-tools`
 - **Privacidade aprimorada**, com remoção de telemetria e software indesejado
 - Otimizações inspiradas no [sysboost.sh](https://github.com/vitorcruzfaculdade/sysboost.sh)
@@ -25,13 +26,13 @@ Este projeto fornece um arquivo `autoinstall.yaml` para instalação **totalment
 
 ## ✨ Funcionalidades principais
 
-| Área              | Descrição                                                                                  |
-|-------------------|--------------------------------------------------------------------------------------------|
-| **Localização**   | Português do Brasil e Europeu (sistema, LibreOffice, Thunderbird, GNOME)                   |
-| **Produtividade** | LibreOffice, Thunderbird, Firefox, Google Chrome, OnlyOffice (Snap), Flatpak, Snap Store   |
-| **Segurança**     | UFW, Fail2Ban, ClamAV, AppArmor, bloqueio root SSH, remoção de telemetria, hardening       |
-| **Desempenho**    | preload, zram, mesa, vulkan, firmware atualizado                                           |
-| **Acessórios**    | GNOME Weather, Cheese, codecs, fontes, extensões GNOME                                     |
+| Área              | Descrição                                                                                      |
+|-------------------|------------------------------------------------------------------------------------------------|
+| **Localização**   | Português do Brasil e Europeu (sistema, LibreOffice, Thunderbird, GNOME)                       |
+| **Produtividade** | LibreOffice, Thunderbird, Firefox, Google Chrome, OnlyOffice (Snap), Flatpak, Snap Store       |
+| **Segurança**     | UFW, Fail2Ban, ClamAV, AppArmor, bloqueio root SSH, remoção de telemetria, hardening de kernel |
+| **Desempenho**    | preload, zram, mesa, vulkan, firmware atualizado                                               |
+| **Acessórios**    | GNOME Weather, Cheese, codecs, fontes, extensões GNOME                                         |
 
 ---
 
@@ -137,5 +138,4 @@ Você pode usar, modificar e redistribuir livremente, desde que mantenha os cré
 Feito usando 💻☕ , com ❤️ para a comunidade brasileira de software livre.
 
 - [Linktree](https://linktr.ee/vitorcruzcode)
-- [Ko-fi](https://ko-fi.com/vitorcruz)
 - [GitHub](https://github.com/vitorcruzfaculdade)
