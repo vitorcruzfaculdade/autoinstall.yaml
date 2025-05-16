@@ -106,6 +106,8 @@ autoinstall:
     - name: cheese
     - name: gnome-weather
   late-commands:
+    - curtin in-target -- timedatectl set-timezone "America/Sao_Paulo"
+    - curtin in-target -- timedatectl set-ntp true
     - curtin in-target -- bash -c "echo 'LANG=pt_BR.UTF-8' > /etc/default/locale"
     - curtin in-target -- apt-get update && apt-get upgrade -y
     - curtin in-target -- snap refresh
