@@ -1,7 +1,7 @@
 # cloud-config
 #
 # Arquivo autoinstall para Ubuntu Desktop 24.04 LTS (Desktop corporativos pt-br)
-# Versão 1.6
+# Versão 1.7
 # Configuração automatizada desenvolvida por Vitor Cruz
 # https://linktr.ee/vitorcruzcode
 # https://github.com/vitorcruzfaculdade
@@ -9,7 +9,8 @@
 # Inclui otimizações inspiradas no script sysboost.sh (por Vitor Cruz)
 # Remove telemetria, ativa codecs, fontes, firewall, RDP, SSH, OnlyOffice, etc.
 # Atenção aos campos de configuração de usuário e senha
-# Não usar esta versão diretamente
+# Não usar esta versão diretamente - Versão de testes e idéias para este yaml principal
+# pegue o autoinstall.yaml ao invés
 
 autoinstall:
   version: 1
