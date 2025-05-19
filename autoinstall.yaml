@@ -57,10 +57,6 @@ autoinstall:
     - fonts-freefont-ttf
     - fonts-noto-mono
     - fonts-noto-ui-core
-    - thunderbird
-    - thunderbird-locale-pt-br
-    - thunderbird-locale-pt
-    - thunderbird-locale-pt-pt
     - gzip
     - bzip2
     - xz-utils
@@ -108,10 +104,14 @@ autoinstall:
     - oddjob
     - oddjob-mkhomedir
     - packagekit
+    - evolution
+    - evolution-common
+    - evolution-plugins
+    - evolution-plugin-pstimport
+    - evolution-ews
   snaps:
     - name: snap-store
     - name: firefox
-    - name: thunderbird
     - name: onlyoffice-desktopeditors
     - name: cheese
     - name: gnome-weather
