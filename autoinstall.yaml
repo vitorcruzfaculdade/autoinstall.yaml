@@ -106,6 +106,7 @@ autoinstall:
     - packagekit
     - evolution
     - evolution-common
+    - evolution-data-server
     - evolution-plugins
     - evolution-plugin-pstimport
     - evolution-ews
