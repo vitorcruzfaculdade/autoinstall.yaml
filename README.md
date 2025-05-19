@@ -11,7 +11,7 @@ Este projeto fornece um arquivo `autoinstall.yaml` para instalação **totalment
 - Instalação de:
   - **LibreOffice** (completo com ajuda e tradução PT-BR)
   - **Mozilla Firefox (Snap)** 
-  - **Thunderbird (Snap)** (tradução PT-BR)
+  - **Evolution** (com suporte a Exchange e importação de PST's)
   - **OnlyOffice (Snap)**
   - **Codecs multimídia** e **fontes da Microsoft**
   - **GNOME Weather (Snap)** Com localização padrão no Rio de Janeiro
@@ -30,7 +30,7 @@ Este projeto fornece um arquivo `autoinstall.yaml` para instalação **totalment
 | Área              | Descrição                                                                                      |
 |-------------------|------------------------------------------------------------------------------------------------|
 | **Localização**   | Português do Brasil e Europeu (sistema, LibreOffice, Thunderbird, GNOME)                       |
-| **Produtividade** | LibreOffice, Thunderbird, Firefox, Google Chrome, OnlyOffice (Snap), Flatpak, Snap Store       |
+| **Produtividade** | LibreOffice, Evolution, Firefox, Google Chrome, OnlyOffice (Snap), Flatpak, Snap Store       |
 | **Segurança**     | UFW, Fail2Ban, ClamAV, AppArmor, bloqueio root SSH, remoção de telemetria, hardening de kernel |
 | **Desempenho**    | preload, zram, mesa, vulkan, firmware atualizado                                               |
 | **Acessórios**    | GNOME Weather, Cheese, codecs, fontes, extensões GNOME                                         |
